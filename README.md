@@ -24,7 +24,7 @@ chmod 777 peos_init.tcl
 cd ~
 ```
 
-#Dependencies
+# Dependencies
 
 The application and features were developed to run on Ubuntu 16.04. No other operating systems or versions are currently supported.
 
