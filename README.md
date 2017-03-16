@@ -38,7 +38,7 @@ pathlib - Allows for managing consistent filesystem paths for different OSs.
 stemming - Used for nicely parsing drugs with a Stemming algorithm.
 ```
 
-#Application
+# Application
 
 The complete application is capable of parsing medical pathways written in PML to extract any drug names and time restraints specified and it then uses this information to find any Drug Drug Interactions in the DINTO ontology which it presents to the user.
 
@@ -90,7 +90,7 @@ which indicates a DDI has been found between the two drugs mentioned. After all 
 ]
 ```
 
-#Feature List
+# Feature List
 Note: All commands assume you are executing them from the home directory of the repo (the-pain-train-group-3).
 
 Three unit testing suites exist for ensuring all features work as intended, they can be run altogether or each unit test individually. 
@@ -98,19 +98,19 @@ Three unit testing suites exist for ensuring all features work as intended, they
 To invoke the DINTO test suite, execute the `python test/dinto-tests.py` command. This will verbosely guide and desribe to the user everything that it is testing.
 
 There are two test suites for PYOS. One for the PYOS object and another for the Time Parser. These can be run, from the home direcrory, with `python test/pyos_test.py` and `python test/pml_time_parser_test.py`. For acceptance test, we supply a default test pml file, `peos/build_test.pml`. 
-###PML File Selection (4)
+### PML File Selection (4)
 Allow for user input to select a pml file in the repository. An error occurs when a given file cannot be found in the current repository or is not a PML file. 
-######Testing
+###### Testing
 Run `python pyos.py`.On startup, the program quiries the user for a file. The example file is `peos/build_test.pml`. Upon success, the program will render a list of options to choose. Upon failure, the program will show a corresponding error message and exit. 
-###PML File Loading (4)
+### PML File Loading (4)
 Loading the file into the PYOS object to allow for the analysis and extraction of drugs within the file. This is done on initialisation of a PYOS object and requires a file name as a string parameter.
-######Testing
+###### Testing
 Testing PML File Loading, is the same as PML File Selection, as a file is immediately loaded after selection. Run `python pyos.py`. To show that a file is loaded, you can extract drugs from the file with option *4*.
 
-###Running PML Analysis (15)
+### Running PML Analysis (15)
 The PML analysis used is PMLcheck. The output of that is directly routed back to the user.
 
-######Testing
+###### Testing
 Load in a PML file and select Option 1. The user will be outputted with content from PMLcheck. If an error occurs here, it will be an error within PML check itself. Loading `peos/built_test.pml` should return back
 ```
 peos/build_test.pml:3: pain in action 'headache' is unprovided
@@ -119,10 +119,10 @@ peos/build_test.pml:10: wellness in action 'earache' is unprovided
 peos/build_test.pml:12: wellness in action 'earache' is not consumed
 ```
 
-###On-Screen PML Reporting (6)
+### On-Screen PML Reporting (6)
 The program will continually update you on how it is progressing. An action should only report important information back to the user.
 
-######Testing
+###### Testing
 Run `python pyos.py`. Enter the test file, `peos/build_test.pml`. You should be returned with an option menu
 ```
 (1) Check if a PML file is valid using Peos' pmlcheck binary
@@ -134,10 +134,10 @@ Run `python pyos.py`. Enter the test file, `peos/build_test.pml`. You should be 
 ```
 Each action will report back any relevant information to the user. 
 
-###PML Log-file Generation (5)
+### PML Log-file Generation (5)
 All actions of the program are written to `logging/main.log`. If the log file does not previously exist, it will be generated. 
 
-######Testing 
+###### Testing 
 First run a few actions on a PML file to log. In this narrative, we bind all the neccessary values to actions and then run those actions. There is no need to run through this whole narrative to sufficiently test.
 ```
 Load `peos/build_test.pml`
@@ -159,13 +159,13 @@ Select option *q*
 ```
 Use `tail logging/main.log` to view the end of the log file and what content was generated
 
-###PML Error and Warning highlights (10)
+### PML Error and Warning highlights (10)
 This feature is implemented throughout all PML related features and ensures the program return informative information when errors occur either from the system of invalid through user input.
 
-######Testing 
+###### Testing 
 A good measure to test error handling is to attempt to load non-pml files or files that do not exist in the repo. Run `python pyos.py` and enter the filename `nothing` to load. The program will tell the user `File does not exist` and exit safely.
 
-###Select specific OWL Ontology (4)
+### Select specific OWL Ontology (4)
 This feature allows the user to specify and select which OWL ontology is to be used for all queries throughout the program.
 
 ######Testing
